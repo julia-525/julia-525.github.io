@@ -3,65 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0f1115">
-  <title>通訳つき会話 — イベント受付</title>
+  <meta name="theme-color" content="#06c755">
+  <title>通訳つき会話 — イベント案内</title>
   <style>
-    :root { color-scheme: dark; --bg:#0f1115; --card:#171b22; --line:#262c36;
-      --fg:#f4f6fa; --dim:#a9b3c1; --accent:#3d8bfd; }
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    body { margin:0; background:var(--bg); color:var(--fg);
-      font:17px/1.6 -apple-system, "Hiragino Sans", "Noto Sans JP", "Noto Sans TC", system-ui, sans-serif; }
-    .wrap { max-width:34rem; margin:0 auto; padding:1.4rem 1.1rem 3rem; }
-    h1 { font-size:1.6rem; margin:.2rem 0 .3rem; }
-    .sub { color:var(--dim); margin:0 0 1.2rem; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:1rem;
-      padding:1rem; margin:0 0 1rem; }
-    ol { padding-left:1.2rem; margin:.4rem 0 .2rem; }
-    li { margin:.25rem 0; }
-    a.start { display:block; text-align:center; background:var(--accent); color:#06121f;
-      text-decoration:none; font-weight:700; font-size:1.1rem; padding:1rem; border-radius:.9rem; }
-    a.start:active { opacity:.85; }
+    :root { --g:#06c755; --gd:#05a848; --line:#dfe4ea; --bg:#eef1f5; --ink:#12161b; --dim:#5b6470; --danger:#d92b2b; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink);
+      font:19px/1.6 -apple-system, "Hiragino Sans", "Noto Sans JP", "Noto Sans TC", system-ui, sans-serif; }
+    .wrap { max-width:34rem; margin:0 auto; padding:1.1rem 1rem 3rem; }
+    header { border-bottom:3px solid var(--g); padding:.4rem 0 .6rem; margin-bottom:1rem; }
+    h1 { font-size:1.5rem; margin:0; }
+    .sub { color:var(--dim); margin:.2rem 0 0; font-size:.95rem; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:1rem; padding:1rem; margin:0 0 1rem; }
+    .card h2 { font-size:1.15rem; margin:0 0 .5rem; }
+    a.start { display:block; text-align:center; background:var(--g); color:#fff; text-decoration:none;
+      font-weight:800; font-size:1.15rem; padding:1.05rem; border-radius:.9rem; margin:.5rem 0 .3rem; }
+    a.start:active { background:var(--gd); }
+    ol, ul { padding-left:1.3rem; margin:.4rem 0 .3rem; }
+    li { margin:.35rem 0; }
+    .hint { color:var(--dim); font-size:.92rem; margin:.35rem 0; }
+    .warn { border-color:#f0c6c6; background:#fff7f7; }
+    .warn b { color:var(--danger); }
+    code { background:#f2f4f7; padding:.1rem .35rem; border-radius:.3rem; }
     .url { word-break:break-all; font-size:.85rem; color:var(--dim); }
-    .hint { color:var(--dim); font-size:.9rem; }
-    .badge { display:inline-block; padding:.15rem .6rem; border-radius:999px;
-      background:#1d2b3a; color:#cfe6ff; font-size:.85rem; }
-    code { background:#0c0f14; padding:.1rem .35rem; border-radius:.35rem; }
+    .tag { display:inline-block; background:#e9fbef; color:var(--gd); border-radius:999px;
+      padding:.1rem .6rem; font-size:.85rem; font-weight:700; }
   </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>通訳つき会話</h1>
-  <p class="sub">あなたの言葉を、その場で相手の言語に。<span class="badge">試用版</span></p>
+  <header>
+    <h1>通訳つき会話</h1>
+    <p class="sub">その場で話す → すぐ文字と翻訳 <span class="tag">試用版</span></p>
+  </header>
 
   <section class="card">
-    <p id="intro">受付で教えてもらった <strong>イベントコード</strong> で会話を始めます。</p>
-    <a class="start" id="start" href="#">会話をはじめる</a>
-    <p class="hint" id="target" style="margin-top:.7rem"></p>
-  </section>
-
-  <section class="card">
-    <strong>使い方</strong>
+    <h2>来場の方（iPad）</h2>
     <ol>
-      <li>上のボタンを押す</li>
-      <li>イベントコードを入れる（ふつうは自動で入ります）</li>
-      <li>話す言語を選ぶ（日本語・広東語・中文・English・한국어）</li>
+      <li>下のボタンから開く</li>
+      <li>イベントコードを入れる（受付で案内されます）</li>
+      <li>話す言語を選ぶ — <b>日本語の方は「日本語ではじめる」を押すだけ</b></li>
       <li>「マイクを許可して話す」を押して話す</li>
-      <li>終わるときは「終了する」</li>
+      <li>終わったら「会話を終了」。次の方に交代できます</li>
     </ol>
-    <p class="hint">マイクはブラウザが許可を求めます。イヤホンを使うと聞き取りが安定します。</p>
+    <a class="start" id="start" href="#">会話をはじめる</a>
+    <p class="hint" id="target"></p>
   </section>
 
   <section class="card">
-    <strong>運営の方へ / For the operator</strong>
-    <p class="hint">このページは試用窓口です。裏側のURLは試用ごとに変わります。<br>
-    現在の窓口: <span class="url" id="current"></span></p>
+    <h2>主催者の方（スマートフォン）</h2>
+    <ol>
+      <li>運営から受け取った <b>主催者リンク</b> を開く（QR でも可）</li>
+      <li>ホストキーを入れて「接続する」</li>
+      <li><b>表示名</b>を入れて保存（相手の画面にこの名前で出ます）</li>
+      <li>「QR を表示」で来場者用の案内をいつでも出せます</li>
+      <li>最後に <b>「イベント終了・全データ消去」</b></li>
+    </ol>
+    <p class="hint">主催者は日本語で話します（既定）。会話の終了は来場者の画面から行います。</p>
+  </section>
+
+  <section class="card warn">
+    <h2>この試用イベントは 1 回限り</h2>
+    <p class="hint"><b>「イベント終了・全データ消去」</b>を押すと、会話の文字は<b>すべて消去</b>され、
+    この端末（サーバー）にも残りません。イベントコードも<b>その場で無効</b>になり、二度と使えません。</p>
+    <p class="hint">Pressing “End event” erases all conversation text from memory and invalidates the
+    event code permanently. Nothing about the conversation is written to disk.</p>
+    <p class="hint">按「結束 event」後：所有對話即刻清除、電腦上唔會殘留、event code 立即失效。</p>
+  </section>
+
+  <section class="card">
+    <h2>運営（設定）</h2>
+    <p class="hint">現在の窓口: <span class="url" id="current"></span></p>
     <p class="hint">別の窓口を使うときは <code>?base=https://…&amp;code=demo</code> を付けて開いてください。</p>
   </section>
 </div>
 <script>
-  // The backend is a time-boxed trial tunnel, so the link is not hard-coded in a
-  // way that can silently go stale: ?base= overrides it, and the current window is
-  // shown as text for the operator.
+  // The backend is a time-boxed trial tunnel, so the link is not baked in a way that
+  // silently goes stale: ?base= overrides it and the current window is shown as text.
   var CURRENT_BASE = "https://broadcast-flat-sullivan-passage.trycloudflare.com";
   var params = new URLSearchParams(location.search);
   var base = (params.get("base") || CURRENT_BASE || "").replace(/\/+$/, "");
@@ -71,14 +89,11 @@
   var current = document.getElementById("current");
   if (base) {
     start.href = base + "/?code=" + encodeURIComponent(code);
-    target.textContent = "接続先: " + base + " （コード: " + code + "）";
+    target.textContent = "接続先: " + base + "（コード: " + code + "）";
     current.textContent = base;
   } else {
-    start.href = "#";
-    start.style.opacity = ".45";
-    start.textContent = "現在、開催していません";
-    target.textContent = "次回の開催をお待ちください。";
-    current.textContent = "（未設定）";
+    start.href = "#"; start.style.opacity = ".45"; start.textContent = "現在、開催していません";
+    target.textContent = "次回の開催をお待ちください。"; current.textContent = "（未設定）";
   }
 </script>
 </body>
